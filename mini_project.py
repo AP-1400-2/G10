@@ -21,6 +21,9 @@ class Vector:
 
     def summation(self, v):
         pass
+    def summation(self, vec1):
+        vec = Vector.length(self)
+        return (vec[0] + vec1[0], vec[1] + vec1[1])
 
     def innerProduct(self, v):
         pass
@@ -46,6 +49,8 @@ class stringRedefine:
 
     def __init__(self, s):
         self.s = s
+        self.length_s = len(s)
+        self.lst_s = list(s)
 
     def switchHalf(self):
         pass
