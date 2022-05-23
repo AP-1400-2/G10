@@ -17,10 +17,8 @@ class Vector:
         self.y1 = y1
 
     def length(self):
-        pass
+        return (self.x1 - self.x0, self.y1 - self.y0)
 
-    def summation(self, v):
-        pass
     def summation(self, vec1):
         vec = Vector.length(self)
         return (vec[0] + vec1[0], vec[1] + vec1[1])
@@ -53,7 +51,17 @@ class stringRedefine:
         self.lst_s = list(s)
 
     def switchHalf(self):
-        pass
+        if self.length_s % 2 == 0:
+            first_half = self.lst_s[:(self.length_s // 2)] 
+            second_half = self.lst_s[(self.length_s // 2):]
+            the_string = second_half + first_half
+            return "".join(the_string)
+        else:
+            first_half = self.lst_s[:self.length_s // 2] 
+            mid = self.lst_s[self.length_s // 2]
+            second_half = self.lst_s[(self.length_s // 2 + 1):]
+            the_string = second_half + list(mid) + first_half
+            return "".join(the_string)
 
     def encryption(self):
         pass
