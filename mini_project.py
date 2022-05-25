@@ -1,3 +1,5 @@
+import math
+
 class Vector:
     """This class performs some of the vector operations.
 
@@ -27,7 +29,9 @@ class Vector:
         pass
 
     def toUnitVector(self):
-        pass
+        vec = Vector.length(self)
+        r = math.sqrt((vec[0]**2 + vec[1]**2))
+        return f"{vec[0]}i/{r} + {vec[1]}j/{r}"
 
     def toPolarCoordinates(self):
         pass
@@ -66,17 +70,34 @@ class stringRedefine:
     def encryption(self):
         pass
 
+
+    @staticmethod
+    def primChecker(num: int) -> bool:
+        if num == 2:
+            return True
+        elif num < 2:
+            return False
+
+        for i in range(2, int(num**0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+
     def primeASCII(self):
-        pass
+        primeAscii = []
+        for char in self.s:
+            if not stringRedefine.primChecker(ord(char)):
+                primeAscii.append(char)
+        return "".join(primeAscii)
 
     def __add__(self, __other_obj):
-        pass
+        return stringRedefine( __other_obj.s + self.s)
 
     def __imul__(self, __other_obj):
         pass
 
     def __eq__(self, __o):
-        pass
+        return len(self.s) == len(__o.s)
 
     def __ne__(self, __o):
         pass
