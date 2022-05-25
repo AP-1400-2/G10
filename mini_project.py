@@ -34,7 +34,10 @@ class Vector:
         return f"{vec[0]}i/{r} + {vec[1]}j/{r}"
 
     def toPolarCoordinates(self):
-        pass
+        vec = Vector.length(self)
+        r = math.sqrt((vec[0]**2 + vec[1]**2))
+        O = math.degrees(math.atan(vec[1]/vec[0]))
+        return (format(r * math.cos(O), ".3f"), format(r * math.sin(O), ".3f"))
 
     def directionalDervation(self, F, x, y):
         pass
