@@ -91,7 +91,17 @@ class stringRedefine:
             return "".join(the_string)
 
     def encryption(self):
-        pass
+        charList = []
+        for char in self.s:
+
+            if char.islower():
+                rev_char = chr(ord('z') - ord(char) + ord('a'))
+                charList.append(rev_char)
+
+            elif char.isupper():
+                rev_char = chr(ord('Z') - ord(char) + ord('A'))
+                charList.append(rev_char)
+        return "".join(charList)
 
     @staticmethod
     def primChecker(num: int) -> bool:
@@ -116,10 +126,11 @@ class stringRedefine:
         return stringRedefine(__other_obj.s + self.s)
 
     def __imul__(self, __other_obj):
-        pass
+        cartesian_product = [i + j for i in self.s for j in __other_obj.s]
+        return "".join(cartesian_product)
 
     def __eq__(self, __o):
         return len(self.s) == len(__o.s)
 
     def __ne__(self, __o):
-        pass
+        return len(self.s) != len(__o.s)
