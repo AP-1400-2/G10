@@ -25,8 +25,9 @@ class Vector:
         vec = Vector.length(self)
         return (vec[0] + vec1[0], vec[1] + vec1[1])
 
-    def innerProduct(self, v):
-        pass
+    def innerProduct(self, vec2):
+        vec = Vector.length(self)
+        return (vec[0] * vec2[0]) + (vec[1] * vec2[1])
 
     def toUnitVector(self):
         vec = Vector.length(self)
