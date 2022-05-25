@@ -1,4 +1,6 @@
 import math
+from sympy import *
+
 
 class Vector:
     """This class performs some of the vector operations.
@@ -25,14 +27,17 @@ class Vector:
         vec = Vector.length(self)
         return (vec[0] + vec1[0], vec[1] + vec1[1])
 
-    def innerProduct(self, vec2):
-        vec = Vector.length(self)
-        return (vec[0] * vec2[0]) + (vec[1] * vec2[1])
+    def innerProduct(self, vec1_grad, activator=False):
+        if activator:
+            return (vec1_grad[0] * eval(vec1_grad[2][0])) + (vec1_grad[1] * eval(vec1_grad[2][1]))
+        else:
+            vec = Vector.length(self)
+            return (vec[0] * vec1_grad[0]) + (vec[1] * vec1_grad[1])
 
-    def toUnitVector(self):
+    def toUnitVector(self, activator=False):
         vec = Vector.length(self)
         r = math.sqrt((vec[0]**2 + vec[1]**2))
-        return f"{vec[0]}i/{r} + {vec[1]}j/{r}"
+        return [format(vec[0]/r, ".2f"), format(vec[1]/r, ".2f")] if activator else (f"{vec[0]}i/{r} + {vec[1]}j/{r}")
 
     def toPolarCoordinates(self):
         vec = Vector.length(self)
@@ -40,8 +45,22 @@ class Vector:
         O = math.degrees(math.atan(vec[1]/vec[0]))
         return (format(r * math.cos(O), ".3f"), format(r * math.sin(O), ".3f"))
 
+    @staticmethod
+    def extraction(div_x, div_y, x, y):
+        x = x
+        y = y
+        extracted_divX = eval(div_x)
+        extracted_divY = eval(div_y)
+        return extracted_divX, extracted_divY
+
     def directionalDervation(self, F, x, y):
-        pass
+        xSym, ySym = symbols('x y', real=True)
+        d1_x = diff(F, xSym)
+        d1_y = diff(F, ySym)
+        grad1, grad2 = Vector.extraction(str(d1_x), str(d1_y), x, y)
+        unitList = Vector.toUnitVector(self, True)
+        holder = [int(grad1), int(grad2), unitList]
+        return Vector.innerProduct(self, holder, True)
 
 
 class stringRedefine:
@@ -60,12 +79,12 @@ class stringRedefine:
 
     def switchHalf(self):
         if self.length_s % 2 == 0:
-            first_half = self.lst_s[:(self.length_s // 2)] 
+            first_half = self.lst_s[:(self.length_s // 2)]
             second_half = self.lst_s[(self.length_s // 2):]
             the_string = second_half + first_half
             return "".join(the_string)
         else:
-            first_half = self.lst_s[:self.length_s // 2] 
+            first_half = self.lst_s[:self.length_s // 2]
             mid = self.lst_s[self.length_s // 2]
             second_half = self.lst_s[(self.length_s // 2 + 1):]
             the_string = second_half + list(mid) + first_half
@@ -73,7 +92,6 @@ class stringRedefine:
 
     def encryption(self):
         pass
-
 
     @staticmethod
     def primChecker(num: int) -> bool:
@@ -95,7 +113,7 @@ class stringRedefine:
         return "".join(primeAscii)
 
     def __add__(self, __other_obj):
-        return stringRedefine( __other_obj.s + self.s)
+        return stringRedefine(__other_obj.s + self.s)
 
     def __imul__(self, __other_obj):
         pass
