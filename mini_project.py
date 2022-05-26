@@ -165,7 +165,7 @@ class stringRedefine:
         Example:
         _(a) is the first word, and the first word from last to first is (z), so the program changes (a) to (z)
         _(b) -> (y), (c) -> (x), and etc.
-        
+
         Returns:
             string: A string that has made by encrypted characters
         """
