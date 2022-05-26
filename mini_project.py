@@ -193,7 +193,14 @@ class stringRedefine:
                 return False
         return True
 
-    def primeASCII(self):
+    def primeASCII(self) -> str:
+        """This method performs some operations on the characters of a string.
+
+        This method checks each character of a string and if the ASCII code of that character was not prime, the program prints it.
+
+        Returns:
+            str: A string of characters which are not prime.
+        """
         primeAscii = []
         for char in self.s:
             if not stringRedefine.primChecker(ord(char)):
