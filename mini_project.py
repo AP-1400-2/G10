@@ -1,7 +1,7 @@
 import math
 from sympy import *
 from typing import Tuple
-# type hint of type|type is fot python 3.10 or newer
+# type hint of type|type is for python 3.10 or newer
 # in older version you will use Union[type,type]
 # in order to use Union you have to import it from typing:
         # from typing import Union
@@ -80,7 +80,7 @@ class Vector:
             vec = Vector.length(self)
             return (vec[0] * vec1_grad[0]) + (vec[1] * vec1_grad[1])
 
-    def toUnitVector(self, activator=False):# -> list | str:
+    def toUnitVector(self, activator=False)-> list | str:
         """Convert the vector to unit vector.
 
         Args:
@@ -108,7 +108,7 @@ class Vector:
         return (format(r * math.cos(O), ".3f"), format(r * math.sin(O), ".3f"))
 
     @staticmethod
-    def __extraction(div_x:str, div_y:str, x:int, y:int):# -> float | int:
+    def extraction(div_x:str, div_y:str, x:int, y:int)-> float | int:
         """Calculate the expression by inserting the values of x and y
 
         Args:
@@ -123,7 +123,7 @@ class Vector:
         return extracted_divX, extracted_divY
 
     @classmethod
-    def __directDervation_activator(cls, x="x", y="y"):
+    def directDervation_activator(cls, x="x", y="y"):
         """Transform strings into instances of :class:`Symbol` class.
 
         Before using the \"directionalDervation\" method, by calling this method, we activate
@@ -231,7 +231,7 @@ class stringRedefine:
         return "".join(charList)
 
     @staticmethod
-    def __primChecker(num: int) -> bool:
+    def primChecker(num: int) -> bool:
         """Returns True if its the number else returns False."""
         if num == 2:
             return True
