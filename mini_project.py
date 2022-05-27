@@ -277,7 +277,7 @@ class stringRedefine:
 # On the other hand, the final exams took up almost all of our time, but today we got almost what we wanted.
 # Of course, there are still many shortcomings and the codes are not optimized as expected from a professional project, 
 # and the reason is our little knowledge! We hope that these shortcomings will be pointed out to us, 
-# because it was the first project that tried to observe almost all the points of document writing and pops.
+# because it was the first project that tried to observe almost all the points of document writing and peps.
 # Finally, we apologize for the delay in submitting the mini-project and bad English!
 # We will see you in the final project <3
 # " Sento X " Group 
