@@ -273,7 +273,7 @@ class stringRedefine:
     
     
     
-# The project was ready almost on the first day, but we wanted to make it a bit semi-professional. 
+# Hi there! the project was almost ready on the first day, but we wanted to make it a bit semi-professional. 
 # On the other hand, the final exams took up almost all of our time, but today we got almost what we wanted.
 # Of course, there are still many shortcomings and the codes are not optimized as expected from a professional project, 
 # and the reason is our little knowledge! We hope that these shortcomings will be pointed out to us, 
