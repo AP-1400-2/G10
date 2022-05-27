@@ -4,7 +4,7 @@ from typing import Tuple
 # type hint of type|type is for python 3.10 or newer
 # in older version you will use Union[type,type]
 # in order to use Union you have to import it from typing:
-        # from typing import Union
+# from typing import Union
 
 
 class Vector:
@@ -35,22 +35,22 @@ class Vector:
 
     directDervation_key = False
 
-    def __init__(self, x0:int, y0:int, x1:int, y1:int):
+    def __init__(self, x0: int, y0: int, x1: int, y1: int):
         self.x0 = x0
         self.x1 = x1
         self.y0 = y0
         self.y1 = y1
 
-    def length(self) -> Tuple[int , int]:
+    def length(self) -> Tuple[int, int]:
         """This method computes the length of the vector.
 
         Returns:
             tuple(int, int): A tuple that has the size of a vector.
         """
-        
+
         return (self.x1 - self.x0, self.y1 - self.y0)
 
-    def summation(self, vec1) -> Tuple[int , int]:
+    def summation(self, vec1) -> Tuple[int, int]:
         """This method computes the summation of two vectors.
 
         Args:
@@ -59,11 +59,11 @@ class Vector:
         Returns:
             tuple: A tuple that has sum of two vectors.
         """
-        
+
         vec = Vector.length(self)
         return (vec[0] + vec1[0], vec[1] + vec1[1])
 
-    def innerProduct(self, vec1_grad:list, activator=False)-> float:
+    def innerProduct(self, vec1_grad: list, activator=False) -> float:
         """Computes the internal multiplication of two vectors.
 
         Args:
@@ -73,24 +73,24 @@ class Vector:
         Returns:
             float: Result of innerProduct.
         """
-        
+
         if activator:
             return (vec1_grad[0] * eval(vec1_grad[2][0])) + (vec1_grad[1] * eval(vec1_grad[2][1]))
         else:
             vec = Vector.length(self)
             return (vec[0] * vec1_grad[0]) + (vec[1] * vec1_grad[1])
 
-    def toUnitVector(self, activator=False)-> list | str:
+    def toUnitVector(self, activator=False) -> list | str:
         """Convert the vector to unit vector.
 
         Args:
             activator (bool, optional): Controls how the function works. Defaults to False.
-            
+
         In normal use, the \"activator\" parameter is false But if this method is called 
         inside the directional derivative method,its function is different and it returns
         a list of flute values, which is the result of calculating the unit vector.
         """
-        
+
         vec = Vector.length(self)
         r = math.sqrt((vec[0]**2 + vec[1]**2))
         return [format(vec[0]/r, ".2f"), format(vec[1]/r, ".2f")] if activator else (f"{vec[0]}i/{r} + {vec[1]}j/{r}")
@@ -101,14 +101,14 @@ class Vector:
         Returns:
             tuple(float , float): A tuple that has polarcoordinates.
         """
-        
+
         vec = Vector.length(self)
         r = math.sqrt((vec[0]**2 + vec[1]**2))
         O = math.degrees(math.atan(vec[1]/vec[0]))
         return (format(r * math.cos(O), ".3f"), format(r * math.sin(O), ".3f"))
 
     @staticmethod
-    def extraction(div_x:str, div_y:str, x:int, y:int)-> float | int:
+    def extraction(div_x: str, div_y: str, x: int, y: int) -> float | int:
         """Calculate the expression by inserting the values of x and y
 
         Args:
@@ -117,7 +117,7 @@ class Vector:
             x (int): Coordinates of point x
             y (int): Coordinates of point y
         """
-        
+
         extracted_divX = eval(div_x)
         extracted_divY = eval(div_y)
         return extracted_divX, extracted_divY
@@ -129,16 +129,16 @@ class Vector:
         Before using the \"directionalDervation\" method, by calling this method, we activate
         the class attribute (directDervation_key) .This method uses the sympy library to assign the ideal symbols
         to the function variables so that a partial derivative can be derived from it.
-        
+
         :func:`symbols` function returns a sequence of symbols with names taken
         from ``names`` argument, which can be a comma or whitespace delimited
         string, or a sequence of strings:
         """
-        
+
         cls.directDervation_key = True
         return symbols(x + " " + y, real=True)
 
-    def directionalDervation(self, F , sym_x: Symbol, sym_y: Symbol, a: int, b: int) -> float:
+    def directionalDervation(self, F, sym_x: Symbol, sym_y: Symbol, a: int, b: int) -> float:
         """This method Calculates Directional derivative of F at the point(x,y) in direction of the vector.
 
         To calculate Directional derivative, 3 parts must be considered:
@@ -156,7 +156,7 @@ class Vector:
         Returns:
             float: Directional derivative
         """
-        
+
         if Vector.directDervation_key:
             d1_x = diff(F, sym_x)
             d1_y = diff(F, sym_y)
@@ -184,14 +184,14 @@ class stringRedefine:
 
     def switchHalf(self) -> str:
         """This method switch the place of the first half of string with the second part. 
-           
+
         Attention:
         _if the number of the characters of our string was odd, the program keeps the middle character and switch the others.
 
         Returns:
             str: A string that has changed the place of each character according to the algorithm.
         """
-        
+
         if self.length_s % 2 == 0:
             first_half = self.lst_s[:(self.length_s // 2)]
             second_half = self.lst_s[(self.length_s // 2):]
@@ -217,7 +217,7 @@ class stringRedefine:
         Returns:
             string: A string that has made by encrypted characters
         """
-        
+
         charList = []
         for char in self.s:
 
@@ -251,7 +251,7 @@ class stringRedefine:
         Returns:
             str: A string of characters which are not prime.
         """
-        
+
         primeAscii = []
         for char in self.s:
             if not stringRedefine.primChecker(ord(char)):
@@ -270,14 +270,13 @@ class stringRedefine:
 
     def __ne__(self, __o):
         return len(self.s) != len(__o.s)
-    
-    
-    
-# Hi there! the project was almost ready on the first day, but we wanted to make it a bit semi-professional. 
+
+
+# Hi there! the project was almost ready on the first day, but we wanted to make it a bit semi-professional.
 # On the other hand, the final exams took up almost all of our time, but today we got almost what we wanted.
-# Of course, there are still many shortcomings and the codes are not optimized as expected from a professional project, 
-# and the reason is our little knowledge! We hope that these shortcomings will be pointed out to us, 
+# Of course, there are still many shortcomings and the codes are not optimized as expected from a professional project,
+# and the reason is our little knowledge! We hope that these shortcomings will be pointed out to us,
 # because it was the first project that tried to observe almost all the points of document writing and peps.
 # Finally, we apologize for the delay in submitting the mini-project and bad English!
 # We will see you in the final project <3
-# " Sento X " Group 
+# " Sento X " Group
